@@ -58,7 +58,7 @@ defmodule NervesSystemARM64.MixProject do
         {"TARGET_OS", "linux"},
         {"TARGET_ABI", "musl"},
         {"TARGET_GCC_FLAGS",
-         "-m64 -fstack-protector-strong -march=x86-64 -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
+         "-mabi=lp64 -fstack-protector-strong -mcpu=cortex-a53 -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
       ],
       checksum: package_files()
     ]
