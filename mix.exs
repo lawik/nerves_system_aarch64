@@ -1,8 +1,8 @@
-defmodule NervesSystemX8664.MixProject do
+defmodule NervesSystemARM64.MixProject do
   use Mix.Project
 
   @github_organization "nerves-project"
-  @app :nerves_system_x86_64
+  @app :nerves_system_aarch64
   @source_url "https://github.com/#{@github_organization}/#{@app}"
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
@@ -54,10 +54,11 @@ defmodule NervesSystemX8664.MixProject do
       # variables to the crosscompile environment. These are intended for
       # llvm-based tooling that may need more precise processor information.
       env: [
-        {"TARGET_ARCH", "x86_64"},
+        {"TARGET_ARCH", "aarch64"},
         {"TARGET_OS", "linux"},
         {"TARGET_ABI", "musl"},
-        {"TARGET_GCC_FLAGS", "-m64 -fstack-protector-strong -march=x86-64 -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
+        {"TARGET_GCC_FLAGS",
+         "-m64 -fstack-protector-strong -march=x86-64 -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
       ],
       checksum: package_files()
     ]
@@ -67,7 +68,7 @@ defmodule NervesSystemX8664.MixProject do
     [
       {:nerves, "~> 1.11", runtime: false},
       {:nerves_system_br, "1.29.3", runtime: false},
-      {:nerves_toolchain_x86_64_nerves_linux_musl, "~> 13.2.0", runtime: false},
+      {:nerves_toolchain_aarch64_nerves_linux_musl, "~> 13.2.0", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]
@@ -75,7 +76,7 @@ defmodule NervesSystemX8664.MixProject do
 
   defp description do
     """
-    Nerves System - x86_64
+    Nerves System - aarch64
     """
   end
 
